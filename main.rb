@@ -19,21 +19,25 @@ for loop:
 =end
 
 def stock_picker(stock_list)
-  current_max = stock_list.first
-  current_min = stock_list.first
-  max_index = 0
+  current_min = 0
+  max_index = 1
   min_index = 0
+  max_profit = 0
+  buy_sell = 90
   stock_list.each_with_index do |stock,  index|
-    if stock > current_max && index >= max_index
-      current_max = stock
+    # update current min
+    if stock < stock_list[current_min]
+      current_min = index
+    end
+    # update index based on max profit
+    if stock_list[max_index] - stock_list[min_index] < stock - stock_list[current_min]
       max_index = index
-    elsif stock < current_min && index <= min_index
-      current_min = stock
-      min_index = index
+      min_index = current_min
     end
   end
-  [current_max, current_min]
+  [min_index, max_index]
 end
+
 
 p stock_picker([17,3,6,9,15,8,6,1,10])
 #=>[1,4]
