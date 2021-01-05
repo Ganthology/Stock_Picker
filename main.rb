@@ -22,8 +22,8 @@ def stock_picker(stock_list)
   current_min = 0
   max_index = 1
   min_index = 0
-  max_profit = 0
-  buy_sell = 90
+  # max_profit = 0
+  # buy_sell = 90
   stock_list.each_with_index do |stock,  index|
     # update current min
     if stock < stock_list[current_min]
